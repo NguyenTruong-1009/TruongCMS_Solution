@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+ * Sinh vien :Mguyen Xuan Truong
+ * Ma so:2123110005
+ * gay thuc hien:14/05/2026
+ * Version 1.0
+ * 
+ */
+
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;

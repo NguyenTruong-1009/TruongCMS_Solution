@@ -1,10 +1,10 @@
 ﻿/*
  * Sinh vien :Mguyen Xuan Truong
  * Ma so:2123110005
- * Version 01
+ * gay thuc hien:14/05/2026
+ * Version 1.0
  * 
  */
-
 
 
 
