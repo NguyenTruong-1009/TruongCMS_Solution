@@ -9,10 +9,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CMS.Data.CMS.Data.Entities;
 
 namespace CMS.Data.Entities
 {
@@ -33,9 +29,8 @@ namespace CMS.Data.Entities
         public string? Address { get; set; }
 
         [Required]
-        public string Password { get; set; } // Lưu mật khẩu thô theo yêu cầu tối giản
+        public string Password { get; set; }
 
         public virtual ICollection<Order>? Orders { get; set; }
     }
-
 }

@@ -1,32 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS.Data", "CMS.Data\CMS.Data.csproj", "{29C402B2-0D71-4B13-8CF0-1CA1A49DD033}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS Backend", "CMS Backend\CMS Backend.csproj", "{C2BEA7BD-5E91-4522-808F-03E6489357A9}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "cms.frontend", "..\cms.frontend\", "{43D006A4-455B-4E01-BA09-874642FF5644}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_65053"
-		Debug.AspNetCompiler.PhysicalPath = "..\cms.frontend\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_65053\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_65053"
-		Release.AspNetCompiler.PhysicalPath = "..\cms.frontend\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_65053\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "65053"
-		SlnRelativePath = "..\cms.frontend\"
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,12 +21,11 @@ Global
 		{C2BEA7BD-5E91-4522-808F-03E6489357A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2BEA7BD-5E91-4522-808F-03E6489357A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2BEA7BD-5E91-4522-808F-03E6489357A9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43D006A4-455B-4E01-BA09-874642FF5644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43D006A4-455B-4E01-BA09-874642FF5644}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43D006A4-455B-4E01-BA09-874642FF5644}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{43D006A4-455B-4E01-BA09-874642FF5644}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {731F9D38-0B99-45EC-91AE-DA179E724AE8}
 	EndGlobalSection
 EndGlobal
