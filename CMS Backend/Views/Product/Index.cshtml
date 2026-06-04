@@ -1,52 +1,88 @@
-﻿@model IEnumerable<CMS.Data.Entities.Product>
+﻿@model List<CMS.Data.Entities.Product>
 
-<div class="container mt-4">
+    @{
+    ViewData["Title"] = "Danh sách sản phẩm";
+    }
 
-    <h2 class="mb-4 text-primary">
-        DANH SÁCH SẢN PHẨM
-    </h2>
+    <div class="container mt-4">
 
-    <table class="table table-bordered table-hover shadow-sm">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Danh sách sản phẩm</h3>
 
-        <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Tên Sản Phẩm</th>
-                <th>Mô Tả</th>
-                <th>Giá</th>
-                <th>Tồn Kho</th>
-                <th>Hình Ảnh</th>
-            </tr>
-        </thead>
+            <a asp-action="Create" class="btn btn-success">
+                <i class="fa fa-plus"></i> Thêm sản phẩm
+            </a>
+        </div>
 
-        <tbody>
+        <div class="card shadow border-0">
 
-            @foreach (var item in Model)
-            {
-                <tr>
+            <div class="card-body">
 
-                    <td>@item.Id</td>
+                <table class="table table-bordered table-hover">
 
-                    <td>@item.Name</td>
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Hình ảnh</th>
+                            <th width="220">Chức năng</th>
+                        </tr>
+                    </thead>
 
-                    <td>@item.Description</td>
+                    <tbody>
 
-                    <td>
-                        @item.Price.ToString("N0") VNĐ
-                    </td>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
 
-                    <td>@item.StockQuantity</td>
+                            <td>@item.Id</td>
 
-                    <td>
-                        <img src="@item.ImageUrl"
-                             width="80" />
-                    </td>
+                            <td>@item.Name</td>
 
-                </tr>
-            }
+                            <td>@item.Price.ToString("N0") VNĐ</td>
 
-        </tbody>
+                            <td>@item.StockQuantity</td>
 
-    </table>
+                            <td>
+                                <img src="~/images/@item.ImageUrl"
+                                     width="80"
+                                     class="img-thumbnail" />
+                            </td>
 
-</div>
+                            <td>
+
+                                <a asp-action="Details"
+                                   asp-route-id="@item.Id"
+                                   class="btn btn-info btn-sm">
+                                    Chi tiết
+                                </a>
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.Id"
+                                   class="btn btn-warning btn-sm">
+                                    Sửa
+                                </a>
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@item.Id"
+                                   onclick="return confirm('Bạn có chắc muốn xóa?')"
+                                   class="btn btn-danger btn-sm">
+                                    Xóa
+                                </a>
+
+                            </td>
+
+                        </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>

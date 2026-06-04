@@ -9,7 +9,7 @@ namespace CMS_Backend.Controllers
 
     using Microsoft.AspNetCore.Authorization; // Cần thêm namespace này
 
-    [Authorize] // Bắt buộc phải đăng nhập mới được vào các hàm bên dưới
+    [Authorize(Roles = "Admin,Editor")]
 
     public class PostController : Controller
     {

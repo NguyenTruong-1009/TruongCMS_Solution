@@ -1,9 +1,13 @@
 ﻿using CMS.Data;
 using CMS.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization; // Cần thêm namespace này
 namespace CMS_Backend.Controllers
 {
+    
+
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -65,7 +69,7 @@ namespace CMS_Backend.Controllers
             return View(category); // Gửi đối tượng tìm được sang giao diện Edit
         }
 
-        // 2. Hàm POST: Nhận dữ liệu mới từ người dùng và lưu lại
+        
         [HttpPost]
         public IActionResult Edit(Category model)
         {
@@ -78,6 +82,7 @@ namespace CMS_Backend.Controllers
             // Quay lại trang danh sách để xem kết quả
             return RedirectToAction("Index");
         }
+
 
     }
 }

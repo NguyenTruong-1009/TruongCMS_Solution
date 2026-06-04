@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+﻿import React from 'react';
+import CategoryList from './components/CategoryList';
+import ProductList from './components/ProductList'; // Nhớ thêm dòng import này
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="container mt-5">
+            <header className="pb-3 mb-4 border-bottom">
+                <span className="fs-4 font-weight-bold text-dark">
+                    👗 FASHION BOUTIQUE - THỜI TRANG CÔNG SỞ & DẠ HỘI
+                </span>
+            </header>
+
+            <div className="row">
+                {/* Cột bên trái: Danh mục sản phẩm */}
+                <div className="col-md-4">
+                    <CategoryList />
+                </div>
+
+                {/* Cột bên phải: Danh sách sản phẩm thời trang tự làm */}
+                <div className="col-md-8">
+                    <h4 className="mb-4 text-uppercase text-secondary font-weight-bold">Bộ sưu tập mới nhất</h4>
+                    <ProductList />
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;

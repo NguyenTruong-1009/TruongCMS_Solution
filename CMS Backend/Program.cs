@@ -81,6 +81,12 @@ app.UseCors("AllowAll");
 
 // Authentication + Authorization
 app.UseAuthentication();
+app.UseStaticFiles();
+
+// Kích hoạt CORS đúng vị trí này
+app.UseCors("AllowReactApp");
+
+
 app.UseAuthorization();
 
 // ======================================================
