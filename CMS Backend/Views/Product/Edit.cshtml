@@ -1,4 +1,4 @@
-﻿﻿@model CMS.Data.Entities.Product
+﻿@model CMS.Data.Entities.Product
 
 @{
     ViewData["Title"] = "Sửa sản phẩm";
@@ -51,7 +51,7 @@
 
                     <br />
 
-                    <img src="@Url.Content(" ~ /images/" + Model.ImageUrl)"
+                    <img src="~/images/@Model.ImageUrl"
                          width="150"
                          class="img-thumbnail mb-2" />
 

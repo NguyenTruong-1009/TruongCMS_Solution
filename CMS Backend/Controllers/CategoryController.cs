@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization; // Cần thêm namespace này
 namespace CMS_Backend.Controllers
 {
-
+    
 
     [Authorize]
     public class CategoryController : Controller
@@ -69,7 +69,7 @@ namespace CMS_Backend.Controllers
             return View(category); // Gửi đối tượng tìm được sang giao diện Edit
         }
 
-
+        
         [HttpPost]
         public IActionResult Edit(Category model)
         {
