@@ -1,28 +1,30 @@
 ﻿@model IEnumerable<CMS.Data.Entities.Product>
+    @{
+    Layout = "_LayoutAdmin";
+    }
+    <div class="container mt-4">
 
-<div class="container mt-4">
+        <h2 class="mb-4 text-primary">
+            DANH SÁCH SẢN PHẨM
+        </h2>
 
-    <h2 class="mb-4 text-primary">
-        DANH SÁCH SẢN PHẨM
-    </h2>
+        <table class="table table-bordered table-hover shadow-sm">
 
-    <table class="table table-bordered table-hover shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Mô Tả</th>
+                    <th>Giá</th>
+                    <th>Tồn Kho</th>
+                    <th>Hình Ảnh</th>
+                </tr>
+            </thead>
 
-        <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Tên Sản Phẩm</th>
-                <th>Mô Tả</th>
-                <th>Giá</th>
-                <th>Tồn Kho</th>
-                <th>Hình Ảnh</th>
-            </tr>
-        </thead>
+            <tbody>
 
-        <tbody>
-
-            @foreach (var item in Model)
-            {
+                @foreach (var item in Model)
+                {
                 <tr>
 
                     <td>@item.Id</td>
@@ -43,10 +45,10 @@
                     </td>
 
                 </tr>
-            }
+                }
 
-        </tbody>
+            </tbody>
 
-    </table>
+        </table>
 
-</div>
+    </div>
