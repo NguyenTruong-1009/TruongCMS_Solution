@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import CategoryList from './components/CategoryList';
-import ProductList from './components/ProductList'; // Nhớ thêm dòng import này
-import './App.css';
+import ProductList from './components/ProductList';
+import PostList from './components/PostList'; // Nhớ thêm dòng import này để kích hoạt phần tin tức
 
 function App() {
     return (
@@ -12,16 +12,21 @@ function App() {
                 </span>
             </header>
 
+            {/* KHU VỰC 1: SHOPPING (Sản phẩm và Bộ lọc danh mục sản phẩm) */}
             <div className="row">
-                {/* Cột bên trái: Danh mục sản phẩm */}
                 <div className="col-md-4">
                     <CategoryList />
                 </div>
-
-                {/* Cột bên phải: Danh sách sản phẩm thời trang tự làm */}
                 <div className="col-md-8">
                     <h4 className="mb-4 text-uppercase text-secondary font-weight-bold">Bộ sưu tập mới nhất</h4>
                     <ProductList />
+                </div>
+            </div>
+
+            {/* KHU VỰC 2: BLOG & BLOG CATEGORIES (Tin tức thời trang công sở, dạ hội) */}
+            <div className="row mt-5">
+                <div className="col-12">
+                    <PostList />
                 </div>
             </div>
         </div>
