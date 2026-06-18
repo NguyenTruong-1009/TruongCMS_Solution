@@ -32,9 +32,11 @@ namespace CMS_Backend.Controllers
                 .Select(p => new {            // "Gọt tỉa" dữ liệu: chỉ lấy những trường cần thiết ra trang chủ 
                     p.Id,
                     p.Title,
+                    p.Content,
                     p.ImageUrl,
                     p.CreatedDate,
-                    CategoryName = p.Category.Name // Kéo trực tiếp tên chuyên mục thay vì chỉ lấy mã ID cộc lốc 
+                    p.CategoryId,
+                    CategoryName = p.Category.Name
                 })
                 .ToListAsync();
 

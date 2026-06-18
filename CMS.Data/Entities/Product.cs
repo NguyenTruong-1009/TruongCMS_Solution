@@ -43,6 +43,7 @@ namespace CMS.Data.Entities
 
         [ForeignKey("CategoryProductId")]
         public virtual CategoryProduct? CategoryProduct { get; set; }
+        public virtual ICollection<OrderDetail>? OrderDetails { get; set; }
     }
 
 }

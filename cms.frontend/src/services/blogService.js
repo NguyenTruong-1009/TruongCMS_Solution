@@ -1,16 +1,25 @@
 ﻿import axiosClient from '../api/axiosClient';
 
 const blogService = {
-    // Hàm gọi API lấy danh mục các chủ đề bài viết
-    getBlogCategories: () => {
-        const url = '/Categories'; // Khớp với Route quản lý chuyên mục tin tức ở Backend
-        return axiosClient.get(url);
+
+    // Lấy tất cả bài viết
+    getAllPosts: () => {
+        return axiosClient.get('/Posts');
     },
 
-    // Hàm gọi API lấy toàn bộ các bài viết (Mẹo phối đồ, tin tức thời trang)
-    getAllPosts: () => {
-        const url = '/Posts'; // Khớp với Route quản lý bài viết ở Backend
-        return axiosClient.get(url);
+    // Lấy danh mục blog
+    getBlogCategories: () => {
+        return axiosClient.get('/Categories');
+    },
+
+    // Lấy bài viết theo danh mục
+    getPostsByCategory: (categoryId) => {
+        return axiosClient.get(`/Posts/category/${categoryId}`);
+    },
+
+    // Lấy chi tiết bài viết
+    getPostById: (id) => {
+        return axiosClient.get(`/Posts/${id}`);
     }
 };
 

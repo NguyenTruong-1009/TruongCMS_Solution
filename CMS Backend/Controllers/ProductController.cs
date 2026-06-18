@@ -192,5 +192,17 @@ namespace CMS_Backend.Controllers
 
             return View(product);
         }
+    
+    [HttpGet("search")]
+        public IActionResult Search(
+string keyword)
+        {
+            var products = _context.Products
+                .Where(x =>
+                    x.Name.Contains(keyword))
+                .ToList();
+
+            return Ok(products);
+        }
     }
 }

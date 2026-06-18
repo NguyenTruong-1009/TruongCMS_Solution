@@ -23,7 +23,8 @@ namespace CMS.Data.Entities
         public int CustomerId { get; set; }
 
         public int Status { get; set; }
-
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal TotalAmount { get; set; }
         public string? Notes { get; set; }
 
         [ForeignKey("CustomerId")]

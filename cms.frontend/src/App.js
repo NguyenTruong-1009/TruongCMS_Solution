@@ -1,35 +1,56 @@
 ﻿import React from 'react';
-import CategoryList from './components/CategoryList';
-import ProductList from './components/ProductList';
-import PostList from './components/PostList'; // Nhớ thêm dòng import này để kích hoạt phần tin tức
+// Import các thành phần lõi của thư viện điều hướng đường dẫn
+import { Routes, Route } from 'react-router-dom';
+
+// 1. IMPORT CÁC COMPONENT TOÀN CỤC (LAYOUT CHUNG)
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+
+// 2. IMPORT CÁC TRANG CHỨC NĂNG (GIAO DIỆN CHÍNH)
+import Home from './pages/home/index';
+import Shop from './pages/shop/index';                  // Tự động nạp file pages/shop/index.jsx
+import ProductDetail from './pages/product-detail'; // Tự động nạp file pages/product-detail/index.jsx
+import Blog from './pages/blog/index';                  // Tự động nạp file pages/blog/index.jsx
+import BlogDetail from './pages/blog-detail/index';  // Nạp trang chi tiết bài viết cụ thể
+import Cart from './pages/cart/index';                  // Tự động nạp file pages/cart/index.jsx
+import Checkout from './pages/checkout/index';          // Tự động nạp file pages/checkout/index.jsx
+
 
 function App() {
     return (
-        <div className="container mt-5">
-            <header className="pb-3 mb-4 border-bottom">
-                <span className="fs-4 font-weight-bold text-dark">
-                    👗 FASHION BOUTIQUE - THỜI TRANG CÔNG SỞ & DẠ HỘI
-                </span>
-            </header>
 
-            {/* KHU VỰC 1: SHOPPING (Sản phẩm và Bộ lọc danh mục sản phẩm) */}
-            <div className="row">
-                <div className="col-md-4">
-                    <CategoryList />
-                </div>
-                <div className="col-md-8">
-                    <h4 className="mb-4 text-uppercase text-secondary font-weight-bold">Bộ sưu tập mới nhất</h4>
-                    <ProductList />
-                </div>
-            </div>
+        <div className="d-flex flex-column min-vh-100 bg-light">
 
-            {/* KHU VỰC 2: BLOG & BLOG CATEGORIES (Tin tức thời trang công sở, dạ hội) */}
-            <div className="row mt-5">
-                <div className="col-12">
-                    <PostList />
-                </div>
-            </div>
+            <Header />
+
+            <main className="flex-grow-1">
+
+                <Routes>
+
+                    <Route path="/" element={<Home />} />
+
+                    <Route path="/shop" element={<Shop />} />
+
+                    <Route path="/product/:id" element={<ProductDetail />} />
+
+                    <Route path="/blog" element={<Blog />} />
+
+                    <Route path="/blog/:id" element={<BlogDetail />} />
+
+                    <Route path="/cart" element={<Cart />} />
+
+                    <Route path="/checkout" element={<Checkout />} />
+
+
+                </Routes>
+
+            </main>
+
+            <Footer />
+
         </div>
+
     );
 }
 

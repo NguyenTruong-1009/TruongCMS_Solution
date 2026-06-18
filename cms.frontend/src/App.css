@@ -35,4 +35,29 @@
   to {
     transform: rotate(360deg);
   }
+    .product-card {
+        transition: all 0.3s ease;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .product-image {
+        height: 260px;
+        object-fit: cover;
+    }
+
+    .product-title {
+        height: 50px;
+        overflow: hidden;
+        font-weight: 600;
+    }
+
+    .card-footer button {
+        width: 48%;
+    }
 }

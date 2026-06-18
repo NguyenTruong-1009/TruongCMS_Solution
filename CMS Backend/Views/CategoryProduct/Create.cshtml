@@ -1,0 +1,26 @@
+﻿@model CMS.Data.Entities.CategoryProduct
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<h3>Thêm danh mục sản phẩm</h3>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label>Tên danh mục</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Mô tả</label>
+        <textarea asp-for="Description"
+                  class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Lưu
+    </button>
+
+</form>
