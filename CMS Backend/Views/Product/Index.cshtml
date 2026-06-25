@@ -1,88 +1,121 @@
-﻿@model List<CMS.Data.Entities.Product>
+﻿@*@model List<CMS.Data.Entities.Product>*@
+@model PagedResult<CMS.Data.Entities.Product>
+        @{
+        Layout = "_LayoutAdmin";
+        }
 
-    @{
-    ViewData["Title"] = "Danh sách sản phẩm";
-    }
+                          <div class="container mt-4">
 
-    <div class="container mt-4">
+                              <div class="d-flex justify-content-between align-items-center mb-3">
+                                  <h3>Danh sách sản phẩm</h3>
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h3>Danh sách sản phẩm</h3>
+                                  <a asp-action="Create" class="btn btn-success">
+                                      <i class="fa fa-plus"></i> Thêm sản phẩm
+                                  </a>
+                              </div>
 
-            <a asp-action="Create" class="btn btn-success">
-                <i class="fa fa-plus"></i> Thêm sản phẩm
-            </a>
-        </div>
+                              <div class="card shadow border-0">
 
-        <div class="card shadow border-0">
+                                  <div class="card-body">
 
-            <div class="card-body">
+                                      <table class="table table-bordered table-hover">
 
-                <table class="table table-bordered table-hover">
+                                          <thead class="table-dark">
+                                              <tr>
+                                                  <th>ID</th>
+                                                  <th>Tên</th>
+                                                  <th>Giá</th>
+                                                  <th>Số lượng</th>
+                                                  <th>Hình ảnh</th>
+                                                  <th width="220">Chức năng</th>
+                                              </tr>
+                                          </thead>
 
-                    <thead class="table-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Tên</th>
-                            <th>Giá</th>
-                            <th>Số lượng</th>
-                            <th>Hình ảnh</th>
-                            <th width="220">Chức năng</th>
-                        </tr>
-                    </thead>
+                                          <tbody>
 
-                    <tbody>
+                                              @foreach (var item in  Model.Items)
+                                              {
+                                              <tr>
 
-                        @foreach (var item in Model)
-                        {
-                        <tr>
+                                                  <td>@item.Id</td>
 
-                            <td>@item.Id</td>
+                                                  <td>@item.Name</td>
 
-                            <td>@item.Name</td>
+                                                  <td>@item.Price.ToString("N0") VNĐ</td>
 
-                            <td>@item.Price.ToString("N0") VNĐ</td>
+                                                  <td>@item.StockQuantity</td>
 
-                            <td>@item.StockQuantity</td>
+                                                  <td>
+                                                      <img src="~/images/@item.ImageUrl"
+                                                           width="80"
+                                                           class="img-thumbnail" />
+                                                  </td>
 
-                            <td>
-                                <img src="~/images/@item.ImageUrl"
-                                     width="80"
-                                     class="img-thumbnail" />
-                            </td>
+                                                  <td>
 
-                            <td>
+                                                      <a asp-action="Details"
+                                                         asp-route-id="@item.Id"
+                                                         class="btn btn-info btn-sm">
+                                                          Chi tiết
+                                                      </a>
 
-                                <a asp-action="Details"
-                                   asp-route-id="@item.Id"
-                                   class="btn btn-info btn-sm">
-                                    Chi tiết
-                                </a>
+                                                      <a asp-action="Edit"
+                                                         asp-route-id="@item.Id"
+                                                         class="btn btn-warning btn-sm">
+                                                          Sửa
+                                                      </a>
 
-                                <a asp-action="Edit"
-                                   asp-route-id="@item.Id"
-                                   class="btn btn-warning btn-sm">
-                                    Sửa
-                                </a>
+                                                      <a asp-action="Delete"
+                                                         asp-route-id="@item.Id"
+                                                         onclick="return confirm('Bạn có chắc muốn xóa?')"
+                                                         class="btn btn-danger btn-sm">
+                                                          Xóa
+                                                      </a>
 
-                                <a asp-action="Delete"
-                                   asp-route-id="@item.Id"
-                                   onclick="return confirm('Bạn có chắc muốn xóa?')"
-                                   class="btn btn-danger btn-sm">
-                                    Xóa
-                                </a>
+                                                  </td>
 
-                            </td>
+                                              </tr>
+                                              }
 
-                        </tr>
-                        }
+                                          </tbody>
 
-                    </tbody>
+                                      </table>
 
-                </table>
+                                  </div>
 
-            </div>
+                              </div>
+                              <nav>
+                                  <ul class="pagination justify-content-center">
 
-        </div>
+                                      <li class="page-item @(Model.CurrentPage == 1 ? " disabled" : "" )">
+                                          <a class="page-link"
+                                             asp-route-page="@(Model.CurrentPage - 1)">
+                                              Previous
+                                          </a>
+                                      </li>
 
-    </div>
+                                      @for(int i = 1; i <= Model.TotalPages; i++)
+                                      {
+                                      <li class="page-item @(i == Model.CurrentPage ? " active" : "" )">
+
+                                          <a class="page-link"
+                                             asp-route-page="@i">
+                                              @i
+                                          </a>
+
+                                      </li>
+                                      }
+
+                                      <li class="page-item @(Model.CurrentPage == Model.TotalPages ? " disabled" : "" )">
+
+                                          <a class="page-link"
+                                             asp-route-page="@(Model.CurrentPage + 1)">
+                                              Next
+                                          </a>
+
+                                      </li>
+
+                                  </ul>
+                              </nav>
+
+                          </div>

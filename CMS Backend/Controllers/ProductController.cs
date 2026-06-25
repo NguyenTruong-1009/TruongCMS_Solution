@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using CMS.Data;
 using CMS.Data.Entities;
 using Microsoft.AspNetCore.Hosting;
-
+using CMS_Backend.Models;
 namespace CMS_Backend.Controllers
 {
     public class ProductController : Controller
@@ -23,18 +23,36 @@ namespace CMS_Backend.Controllers
         // DANH SÁCH SẢN PHẨM
         // =====================================================
 
-        public IActionResult Index()
+
+
+public IActionResult Index(int page = 1)
+    {
+        int pageSize = 5;
+
+        var totalItems = _context.Products.Count();
+
+        var products = _context.Products
+            .Include(x => x.CategoryProduct)
+            .OrderByDescending(x => x.Id)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+
+        var model = new PagedResult<Product>
         {
-            var products = _context.Products.ToList();
+            Items = products,
+            CurrentPage = page,
+            TotalPages = (int)Math.Ceiling((double)totalItems / pageSize),
+            TotalItems = totalItems,
+            PageSize = pageSize
+        };
 
-            return View(products);
-        }
+        return View(model);
+    }
 
-        // =====================================================
-        // THÊM SẢN PHẨM
-        // =====================================================
 
-        [HttpGet]
+
+    [HttpGet]
         public IActionResult Create()
         {
             return View();

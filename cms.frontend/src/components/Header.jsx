@@ -8,6 +8,36 @@ function Header() {
     const location = useLocation();
 
 
+    // ────────────────────────────────────────────────────────
+    // LOGIC CỐT LÕI: ĐỌC VÀ HOÀN NGUYÊN PHIÊN ĐĂNG NHẬP KHÁCH HÀNG
+    // ────────────────────────────────────────────────────────
+    // 1. Đọc chuỗi văn bản thô từ bộ nhớ LocalStorage của trình duyệt
+    const customerString = localStorage.getItem('customer');
+
+
+    // 2. Chuyển đổi ngược chuỗi văn bản (String) thành đối tượng JSON sạch để lấy các trường dữ liệu
+    const customer = customerString ? JSON.parse(customerString) : null;
+
+
+    /**
+     * Hàm xử lý sự kiện Đăng xuất (Dọn dẹp tài khoản)
+     */
+    const handleLogoutSubmit = (e) => {
+        e.preventDefault();
+
+
+        // Xóa sạch dấu vết chiếc chìa khóa định danh khỏi bộ nhớ trình duyệt
+        localStorage.removeItem('customer');
+
+
+        alert("🔒 ĐÃ ĐĂNG XUẤT: Phiên làm việc an toàn của bạn đã kết thúc!");
+
+
+        // Cưỡng chế điều hướng quay về trang chủ và dọn dẹp lại toàn bộ State hệ thống
+        window.location.href = "/";
+    };
+
+
     // Hàm xử lý giả lập khi bấm Tìm kiếm nhanh
     const handleSearchSubmit = (e) => {
         e.preventDefault();
@@ -24,30 +54,77 @@ function Header() {
 
     return (
         <header className="main-header-wrapper bg-white shadow-sm sticky-top">
-
-
             {/* ──────────────────────────────────────────────────────── */}
-            {/* TẦNG TIỆN ÍCH 1: THANH TOP BAR (Cú pháp chuẩn Bootstrap 4) */}
+            {/* TẦNG TIỆN ÍCH 1: THANH TOP BAR (Cập nhật chuẩn Dropdown v4) */}
             {/* ──────────────────────────────────────────────────────── */}
             <div className="top-bar bg-dark py-2 text-white" style={{ fontSize: '13px' }}>
                 <div className="container d-flex justify-content-between align-items-center">
-                    {/* Bên trái: Hotline & Email (Sử dụng mr-3 chuẩn v4) */}
+                    {/* Bên trái: Hotline & Email (Giữ nguyên) */}
                     <div className="top-bar-left">
                         <span className="mr-3">
                             <i className="fas fa-phone-alt mr-1"></i> Hotline: 090x.xxx.xxx
                         </span>
                         <span>
-                            <i className="fas fa-envelope mr-1"></i> Email: support@thaicms.retail
+                            <i className="fas fa-envelope mr-1"></i> Email: support@truongcms.retail
                         </span>
                     </div>
-                    {/* Bên phải: Nút Đăng nhập / Đăng ký nhanh (Sử dụng mr-3 chuẩn v4) */}
+
+
+                    {/* Bên phải: Nút Đăng nhập / Đăng ký hoặc Dropdown sống */}
                     <div className="top-bar-right">
-                        <Link to="/login" className="text-white mr-3 text-decoration-none transition-link">
-                            <i className="fas fa-user mr-1"></i> Đăng nhập
-                        </Link>
-                        <Link to="/register" className="text-white text-decoration-none transition-link">
-                            <i className="fas fa-user-plus mr-1"></i> Đăng ký
-                        </Link>
+                        {customer ? (
+                            /* KỊCH BẢN 1: ĐÃ LOGIN THÀNH CÔNG -> HIỂN THỊ MENU THẢ CHUẨN BOOTSTRAP 4 */
+                            <ul className="nav justify-content-end p-0 m-0" style={{ listStyle: 'none' }}>
+                                <li className="nav-item dropdown">
+                                    {/* Nút kích hoạt Dropdown (Thêm class text-white và cursor) */}
+                                    <a
+                                        className="nav-link dropdown-toggle p-0 text-white font-weight-bold text-decoration-none"
+                                        href="#"
+                                        id="topBarAuthDropdown"
+                                        role="button"
+                                        data-toggle="dropdown" // Kích hoạt Script Bootstrap ngầm
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        <i className="fas fa-user-circle mr-1 text-info"></i> Chào, {customer.fullName}
+                                    </a>
+
+
+                                    {/* Khối kho menu con xổ ra (Ép style zIndex lớn để đè lên tầng logo phía dưới) */}
+                                    <div
+                                        className="dropdown-menu dropdown-menu-right shadow border-0 mt-2"
+                                        aria-labelledby="topBarAuthDropdown"
+                                        style={{ borderRadius: '8px', zIndex: 9999, minWidth: '160px' }}
+                                    >
+                                        <Link className="dropdown-item small font-weight-bold text-secondary py-2" to="/profile">
+                                            <i className="fas fa-id-card mr-2 text-primary"></i> Hồ sơ cá nhân
+                                        </Link>
+                                        <Link className="dropdown-item small font-weight-bold text-secondary py-2" to="/my-orders">
+                                            <i className="fas fa-box-open mr-2 text-success"></i> Đơn hàng của tôi
+                                        </Link>
+                                        <div className="dropdown-divider"></div>
+                                        <button
+                                            className="dropdown-item small font-weight-bold text-danger py-2 w-100 text-left border-0 bg-transparent"
+                                            onClick={handleLogoutSubmit}
+                                            style={{ cursor: 'pointer' }}
+                                        >
+                                            <i className="fas fa-sign-out-alt mr-2"></i> Đăng xuất
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        ) : (
+                            /* KỊCH BẢN 2: CHƯA ĐĂNG NHẬP -> TRẢ VỀ CẶP NÚT GỐC CỦA THẦY */
+                            <>
+                                <Link to="/login" className="text-white mr-3 text-decoration-none transition-link">
+                                    <i className="fas fa-user mr-1"></i> Đăng nhập
+                                </Link>
+                                <Link to="/register" className="text-white text-decoration-none transition-link">
+                                    <i className="fas fa-user-plus mr-1"></i> Đăng ký
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
@@ -175,4 +252,6 @@ function Header() {
         </header>
     );
 }
+
+
 export default Header;

@@ -128,7 +128,25 @@ namespace CMS.Backend.Controllers
             return Ok(product);
         }
 
+        [HttpGet("hot")]
+        public IActionResult HotProducts()
+        {
+            return Ok(
+                _context.Products
+                .Where(x => x.IsHot)
+                .Take(8)
+                .ToList());
+        }
 
+        [HttpGet("new")]
+        public IActionResult NewProducts()
+        {
+            return Ok(
+                _context.Products
+                .OrderByDescending(x => x.CreatedDate)
+                .Take(8)
+                .ToList());
+        }
 
 
     }

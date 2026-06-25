@@ -37,7 +37,9 @@ namespace CMS.Data.Entities
         public int StockQuantity { get; set; }
 
         public string? ImageUrl { get; set; }
+        public bool IsHot { get; set; }
 
+        public DateTime? CreatedDate { get; set; }
         // Khóa ngoại nối tới CategoryProduct
         public int CategoryProductId { get; set; }
 

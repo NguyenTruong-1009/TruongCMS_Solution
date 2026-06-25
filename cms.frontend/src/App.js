@@ -15,6 +15,11 @@ import Blog from './pages/blog/index';                  // Tự động nạp fi
 import BlogDetail from './pages/blog-detail/index';  // Nạp trang chi tiết bài viết cụ thể
 import Cart from './pages/cart/index';                  // Tự động nạp file pages/cart/index.jsx
 import Checkout from './pages/checkout/index';          // Tự động nạp file pages/checkout/index.jsx
+import Register from './pages/register/index';
+import Login from './pages/login/index';
+import MyOrders from './pages/auth/MyOrders';
+import Profile from './pages/auth/Profile';
+import AboutUs from './pages/about/index';
 
 
 function App() {
@@ -38,9 +43,15 @@ function App() {
 
                     <Route path="/blog/:id" element={<BlogDetail />} />
 
+                    <Route path="/about" element={<AboutUs />} />
                     <Route path="/cart" element={<Cart />} />
 
                     <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/my-orders" element={<MyOrders />} />
+                    <Route path="/Profile" element={<Profile />} />
+
 
 
                 </Routes>

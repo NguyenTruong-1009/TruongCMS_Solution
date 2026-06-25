@@ -5,9 +5,9 @@ import HeroBanner from "./HeroBanner";
 import CategoryMenu from "../../components/CategoryMenu";
 import LatestBlog from "./LatestBlog";
 import ProductGrid from "./ProductGrid";
+import HotProducts from "./HotProducts";
+import NewProducts from "./NewProducts";
 
-//import NewProduct from "../../components/NewProduct";
-//import HotProduct from "../../components/HotProduct";
 
 
 
@@ -31,29 +31,25 @@ return (
 
             <div className="d-flex justify-content-between align-items-center mb-3">
 
-                <h3 className="fw-bold">
-                    🆕 Sản phẩm mới nhất
-                </h3>
+
 
             </div>
 
-            {/*<NewProduct />*/}
+            <NewProducts />
 
         </section>
 
-        {/* Tầng 4: Sản phẩm bán chạy */}
+     
         <section className="container mt-5">
 
             <div className="d-flex justify-content-between align-items-center mb-3">
 
-                <h3 className="fw-bold text-danger">
-                    🔥 Sản phẩm bán chạy
-                </h3>
+
 
             </div>
 
-            {/*<HotProduct />*/}
-            <ProductGrid />
+            <HotProducts />
+    
 
         </section>
 

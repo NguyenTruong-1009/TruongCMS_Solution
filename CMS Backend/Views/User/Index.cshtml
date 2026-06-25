@@ -1,35 +1,38 @@
 ﻿@model IEnumerable<CMS.Data.Entities.User>
+    @{
+    Layout = "_LayoutAdmin";
+    }
 
-<div class="container mt-4">
+    <div class="container mt-4">
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
 
-        <h2 class="text-dark">
-            QUẢN LÝ THÀNH VIÊN
-        </h2>
+            <h2 class="text-dark">
+                QUẢN LÝ THÀNH VIÊN
+            </h2>
 
-        <button class="btn btn-success btn-sm">
-            + Thêm thành viên mới
-        </button>
+            <button class="btn btn-success btn-sm">
+                + Thêm thành viên mới
+            </button>
 
-    </div>
+        </div>
 
-    <table class="table table-hover shadow-sm border">
+        <table class="table table-hover shadow-sm border">
 
-        <thead class="table-light">
-            <tr>
-                <th>ID</th>
-                <th>Tên Đăng Nhập</th>
-                <th>Họ Và Tên</th>
-                <th>Quyền Hạn</th>
-                <th>Thao Tác</th>
-            </tr>
-        </thead>
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Đăng Nhập</th>
+                    <th>Họ Và Tên</th>
+                    <th>Quyền Hạn</th>
+                    <th>Thao Tác</th>
+                </tr>
+            </thead>
 
-        <tbody>
+            <tbody>
 
-            @foreach (var user in Model)
-            {
+                @foreach (var user in Model)
+                {
                 <tr>
 
                     <td>@user.Id</td>
@@ -46,21 +49,21 @@
 
                         @if (user.Role == "Administrator")
                         {
-                            <span class="badge bg-danger">
-                                @user.Role
-                            </span>
+                        <span class="badge bg-danger">
+                            @user.Role
+                        </span>
                         }
                         else if (user.Role == "Editor")
                         {
-                            <span class="badge bg-info text-dark">
-                                @user.Role
-                            </span>
+                        <span class="badge bg-info text-dark">
+                            @user.Role
+                        </span>
                         }
                         else
                         {
-                            <span class="badge bg-secondary">
-                                @user.Role
-                            </span>
+                        <span class="badge bg-secondary">
+                            @user.Role
+                        </span>
                         }
 
                     </td>
@@ -76,10 +79,10 @@
                     </td>
 
                 </tr>
-            }
+                }
 
-        </tbody>
+            </tbody>
 
-    </table>
+        </table>
 
-</div>
+    </div>

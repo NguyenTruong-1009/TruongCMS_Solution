@@ -61,3 +61,11 @@
         width: 48%;
     }
 }
+.product-card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.product-card-hover {
+    transition: all .3s ease;
+}

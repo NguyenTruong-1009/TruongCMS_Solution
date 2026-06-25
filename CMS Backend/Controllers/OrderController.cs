@@ -127,6 +127,31 @@ namespace CMS_Backend.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+        // ======================================
+        // XÓA ĐƠN HÀNG
+        // ======================================
+        public IActionResult Delete(int id)
+        {
+            var order = _context.Orders
+                .Include(x => x.OrderDetails)
+                .FirstOrDefault(x => x.Id == id);
+
+            if (order == null)
+                return NotFound();
+
+            // Xóa chi tiết đơn hàng trước
+            if (order.OrderDetails != null && order.OrderDetails.Any())
+            {
+                _context.OrderDetails.RemoveRange(order.OrderDetails);
+            }
+
+            // Xóa đơn hàng
+            _context.Orders.Remove(order);
+
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
 
     }
 
